@@ -13,3 +13,8 @@
 - name: Move composer
   shell: mv /tmp/composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
   sudo: yes
+
+# see https://github.com/phpspec/prophecy/issues/153
+- name: Update composer (ensure we have the latest version)
+   shell: composer self-update
+   sudo: yes
