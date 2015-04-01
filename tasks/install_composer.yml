@@ -16,5 +16,5 @@
 
 # see https://github.com/phpspec/prophecy/issues/153
 - name: Update composer (ensure we have the latest version)
-   shell: composer self-update
-   sudo: yes
+  shell: composer self-update
+  sudo: yes
