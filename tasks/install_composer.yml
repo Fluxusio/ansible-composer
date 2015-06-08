@@ -18,3 +18,13 @@
 - name: Update composer (ensure we have the latest version)
   shell: composer self-update
   sudo: yes
+
+- name: Install composer dev dependencies
+  shell: composer install
+  args:
+    chdir: "{{ composer_dir }}"
+  when: composer_dir is defined
+
+- name: Make composer installed libraries available on cli
+  lineinfile: dest=/home/{{ composer_user }}/.bashrc line="export PATH={{ composer_dir }}vendor/bin:$PATH" owner={{ composer_user }} group={{ composer_user }}
+  when: composer_user is defined
